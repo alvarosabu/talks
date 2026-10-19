@@ -1,0 +1,12 @@
+# Netlify site settings: package directory = talks/vuefes-japan-2026, base directory = unset (repo root).
+# Paths below resolve from the repo root, not from this folder.
+
+[build]
+  command = "pnpm --filter vuefes-japan-2026 build"
+  publish = "talks/vuefes-japan-2026/dist"
+  # Exit 0 skips the build. The first check forces a build on first deploy and manual redeploys.
+  ignore = "[ \"$CACHED_COMMIT_REF\" = \"$COMMIT_REF\" ] && exit 1; git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- talks/vuefes-japan-2026 packages/slidev-theme-as package.json pnpm-lock.yaml pnpm-workspace.yaml"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PNPM_VERSION = "10.28.1"
