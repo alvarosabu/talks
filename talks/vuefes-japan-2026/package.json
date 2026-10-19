@@ -1,0 +1,24 @@
+{
+  "name": "vuefes-japan-2026",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md",
+    "screenshot": "slidev export slides.md --format png"
+  },
+  "dependencies": {
+    "@slidev/cli": "catalog:",
+    "@slidev/types": "catalog:",
+    "@tresjs/cientos": "catalog:",
+    "@tresjs/core": "catalog:",
+    "gsap": "catalog:",
+    "slidev-theme-as": "workspace:*",
+    "three": "catalog:"
+  },
+  "devDependencies": {
+    "@types/three": "catalog:"
+  }
+}

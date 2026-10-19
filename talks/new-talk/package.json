@@ -1,0 +1,17 @@
+{
+  "name": "new-talk",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md",
+    "export": "slidev export slides.md",
+    "screenshot": "slidev export slides.md --format png"
+  },
+  "dependencies": {
+    "@slidev/cli": "catalog:",
+    "@slidev/types": "catalog:",
+    "slidev-theme-as": "workspace:*"
+  }
+}

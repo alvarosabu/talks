@@ -1,0 +1,263 @@
+/*
+ * Tokens mirrored from alvarosabu.dev. px values assume the 960x540 canvas set in package.json.
+ */
+:root {
+  --as-bg: #ffffff;
+  --as-text: #595959;
+  --as-strong: #333333;
+  --as-muted: #8a8a8a;
+  --as-border: #ebebeb;
+  --as-inline-bg: #fafafa;
+  --as-inline-border: #ebebeb;
+  --as-grain: 0.3;
+
+  --as-code-bg: #303446;
+  --as-code-border: #414559;
+  --as-code-fg: #c6d0f5;
+
+  --slidev-theme-primary: var(--as-strong);
+  --slidev-theme-background: var(--as-bg);
+  --slidev-theme-font-display: 'Geist Pixel Square', 'JetBrains Mono', monospace;
+
+}
+
+/* .as-dark lets cover, intro and blackboard stay dark when the deck runs in light mode */
+html.dark,
+.as-dark {
+  --as-bg: #171717;
+  --as-text: #ebebeb;
+  --as-strong: #ffffff;
+  --as-muted: #8a8a8a;
+  --as-border: #3a3a3a;
+  --as-inline-bg: #262626;
+  --as-inline-border: #3a3a3a;
+  --as-grain: 0.12;
+}
+
+/*
+ * Geist Pixel is not on Google Fonts, so the theme ships the file (SIL OFL).
+ * Vite rewrites the relative url and bundles the font with the theme styles.
+ */
+@font-face {
+  font-family: 'Geist Pixel Square';
+  src: url('./fonts/GeistPixel-Square.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Base ---- */
+.slidev-layout {
+  position: relative;
+  isolation: isolate;
+  padding: 60px 96px 80px;
+  background: var(--as-bg);
+  color: var(--as-text);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Grain sits above content, same SVG turbulence as the site */
+.slidev-layout::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: var(--as-grain);
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='screen'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Single-weight display face: keep weight at 400 so browsers do not synthesize a blurry faux bold */
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.font-pixel {
+  font-family: var(--slidev-theme-font-display);
+  font-weight: 400;
+  font-synthesis: none;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  color: var(--as-strong);
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.slidev-layout h1 { font-size: 40px; line-height: 1.15; margin-bottom: 28px; }
+.slidev-layout h2 { font-size: 26px; line-height: 1.25; margin-bottom: 16px; }
+.slidev-layout h3 { font-size: 18px; line-height: 1.3; margin-bottom: 12px; }
+
+.slidev-layout p { margin: 0 0 18px; font-size: 18px; line-height: 1.6; }
+.slidev-layout p:last-child { margin-bottom: 0; }
+
+.slidev-layout strong,
+.slidev-layout b { color: var(--as-strong); }
+
+.slidev-layout a { color: var(--as-strong); text-underline-offset: 3px; }
+
+.slidev-layout ul {
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  font-size: 19px;
+}
+.slidev-layout ul:last-child { margin-bottom: 0; }
+
+.slidev-layout ul > li {
+  position: relative;
+  /* layouts-base.css indents li; the mock aligns the bullet with the heading */
+  margin-left: 0;
+  padding-left: 26px;
+  line-height: 1.6;
+}
+
+/* Smaller list for a busy column, 17px as in the mock's image slide */
+.slidev-layout .list-sm ul { font-size: 17px; }
+.slidev-layout .list-sm:not(:last-child) { margin-bottom: 18px; }
+
+/* Pixel diamond as a mask, so the background color sets the bullet color in both schemes */
+.slidev-layout ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  /* 0.8em is half the 1.6 line-height, so the bullet centers on the first line */
+  top: calc(0.8em - 6px);
+  width: 12px;
+  height: 12px;
+  background: var(--as-muted);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 5' shape-rendering='crispEdges'%3E%3Cpath d='M2 0h1v1H2zM1 1h1v1H1zM3 1h1v1H3zM0 2h1v1H0zM4 2h1v1H4zM1 3h1v1H1zM3 3h1v1H3zM2 4h1v1H2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 5' shape-rendering='crispEdges'%3E%3Cpath d='M2 0h1v1H2zM1 1h1v1H1zM3 1h1v1H3zM0 2h1v1H0zM4 2h1v1H4zM1 3h1v1H1zM3 3h1v1H3zM2 4h1v1H2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Inline code: the site pill. `html` prefix beats Slidev code.css, which loads after the theme */
+html .slidev-layout :not(pre) > code {
+  font-family: var(--slidev-code-font-family);
+  font-size: 0.85em;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--as-inline-bg);
+  border: 1px solid var(--as-inline-border);
+  color: var(--as-strong);
+}
+
+/* ---- Code blocks ---- */
+.slidev-layout {
+  /* Set here, not on :root: Slidev's vars.css loads after the theme and redefines them on :root and html.dark */
+  --slidev-code-background: var(--as-code-bg);
+  --slidev-code-foreground: var(--as-code-fg);
+  --slidev-code-padding: 14px 18px;
+  --slidev-code-font-size: 13px;
+  --slidev-code-line-height: 1.55;
+  --slidev-code-radius: 6px;
+  --slidev-code-margin: 0;
+}
+
+.slidev-layout .slidev-code {
+  border: 1px solid var(--as-code-border);
+  color: var(--as-code-fg);
+}
+
+/* ```ts [wind.ts] renders as the small mono label above the block, not a tab */
+.slidev-layout .slidev-code-block-title {
+  background: transparent;
+  box-shadow: none;
+  padding: 0 0 8px;
+  font-family: var(--slidev-code-font-family);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--as-muted);
+}
+
+.slidev-layout .slidev-code-block-title > div { line-height: inherit; }
+
+.slidev-layout .slidev-code-block-title > [class*='i-'] { display: none; }
+
+.slidev-layout .slidev-code-block-title + .slidev-code {
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+}
+
+/* ---- Utilities ---- */
+.eyebrow {
+  font-family: var(--slidev-theme-font-display);
+  font-size: 13px;
+  color: var(--as-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta {
+  font-family: var(--slidev-code-font-family);
+  font-size: 13px;
+  color: var(--as-muted);
+}
+
+/* The mock lets `p` keep its 18px, so a meta paragraph is mono at body size */
+.slidev-layout p.meta { font-size: 18px; }
+
+.slidev-layout p.lead,
+.lead { color: var(--as-muted); }
+
+.rule { height: 1px; background: var(--as-border); }
+
+/* Media card: images and scenes share the code block border and radius, so every panel matches */
+.card {
+  position: relative;
+  border: 1px solid var(--as-code-border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #0b0b0b;
+}
+
+img.card {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-label {
+  position: absolute;
+  z-index: 2;
+  font-family: var(--slidev-code-font-family);
+  font-size: 11px;
+  color: #9a9a9a;
+  left: 12px;
+  bottom: 10px;
+}
+.card-label.top-right { left: auto; bottom: auto; right: 12px; top: 10px; }
+
+.slidev-layout figure { margin: 0; display: grid; gap: 8px; }
+.slidev-layout figcaption {
+  font-family: var(--slidev-code-font-family);
+  font-size: 11px;
+  color: var(--as-muted);
+}
+
+/* ---- Grain utilities (kept for custom slides) ---- */
+@layer utilities {
+  .noise {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='screen'/%3E%3C/filter%3E%3Crect width='500' height='500' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+  }
+
+  .noise-subtle::before { opacity: 0.3; }
+  .dark .noise-subtle::before { opacity: 0.1; }
+  .noise-strong::before { opacity: 0.7; }
+}

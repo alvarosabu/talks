@@ -1,0 +1,29 @@
+packages:
+  - packages/*
+  - talks/*
+
+catalog:
+  '@slidev/cli': ^52.11.3
+  '@slidev/client': ^52.11.3
+  '@slidev/types': ^52.11.3
+  '@tresjs/cientos': ^5.9.1
+  '@tresjs/core': ^5.9.1
+  '@tresjs/leches': ^1.3.0
+  '@tresjs/post-processing': ^3.9.0
+  '@typegpu/noise': ^0.12.0
+  '@types/three': ^0.186.0
+  '@webgpu/types': ^0.1.74
+  gsap: ^3.15.0
+  three: ^0.186.1
+  typegpu: ^0.12.6
+  unplugin-typegpu: ^0.12.4
+  vite: ^7.3.0
+
+catalogMode: prefer
+
+onlyBuiltDependencies:
+  - esbuild
+  - playwright-chromium
+  - unrs-resolver
+
+shellEmulator: true

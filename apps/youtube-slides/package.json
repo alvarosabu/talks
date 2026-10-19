@@ -1,0 +1,42 @@
+{
+  "name": "youtube-slides",
+  "version": "0.0.0",
+  "type": "module",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "slidev build example.md",
+    "dev": "slidev materials.md --open",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
+  },
+  "dependencies": {
+    "@slidev/types": "catalog:"
+  },
+  "devDependencies": {
+    "@slidev/cli": "catalog:"
+  },
+  "//": "Learn more: https://sli.dev/guide/write-theme.html",
+  "slidev": {
+    "colorSchema": "both",
+    "defaults": {
+      "themeConfig": {
+        "socials": [
+          {
+            "name": "alvarosabu",
+            "url": "https://github.com/alvarosabu"
+          }
+        ]
+      },
+      "fonts": {
+        "sans": "Geist",
+        "mono": "Geist Mono"
+      }
+    }
+  }
+}

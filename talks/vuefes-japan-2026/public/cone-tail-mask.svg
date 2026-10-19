@@ -1,0 +1,56 @@
+<svg viewBox="0 0 800 520" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono', ui-monospace, monospace">
+  <defs>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#e78284" stroke-width="2"/>
+    </pattern>
+    <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a5adce"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="798" height="518" rx="12" fill="#303446" stroke="#414559" stroke-width="2"/>
+  <text x="40" y="44" fill="#a5adce" font-size="17">Carving the V: discard fragments inside a tapering slab</text>
+
+  <!-- cone silhouette, front view, apex down (mesh rotated PI around x) -->
+  <!-- 1 unit = 1 px. base width 384 at screen y=90, apex at y=420 -->
+  <polygon points="208,90 592,90 400,420" fill="#007F62" opacity="0.9"/>
+
+  <!-- the notch: |x| < wedgeHalfWidth where wedgeHalfWidth = 64 * (1 - (y+200)/110), for y < -90 -->
+  <!-- local y=-165 (base) -> wedgeHalfWidth 43.6 ; local y=-90 -> wedgeHalfWidth 0 -->
+  <polygon points="356.4,90 443.6,90 400,165" fill="url(#hatch)" stroke="#e78284" stroke-width="2"/>
+
+  <!-- dashed extension to the virtual y=-200 line where wedgeHalfWidth = 64 -->
+  <line x1="336" y1="55" x2="464" y2="55" stroke="#e78284" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="336" y1="55" x2="356.4" y2="90" stroke="#e78284" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="464" y1="55" x2="443.6" y2="90" stroke="#e78284" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="474" y="60" fill="#e78284" font-size="12">y = -200, wedgeHalfWidth = 64</text>
+  <text x="474" y="76" fill="#e78284" font-size="12">(outside the mesh)</text>
+
+  <!-- y annotations (local object space) -->
+  <line x1="150" y1="90" x2="150" y2="420" stroke="#a5adce" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="120" y="82" fill="#a5adce" font-size="13">local y</text>
+  <line x1="140" y1="90" x2="208" y2="90" stroke="#a5adce" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="60" y="94" fill="#a5adce" font-size="13">-165</text>
+  <line x1="140" y1="165" x2="400" y2="165" stroke="#a5adce" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="60" y="169" fill="#e78284" font-size="13">-90</text>
+  <text x="60" y="424" fill="#a5adce" font-size="13">+165</text>
+
+  <!-- width annotation -->
+  <path d="M356.4 470 V482 M356.4 476 H443.6 M443.6 470 V482" fill="none" stroke="#e78284" stroke-width="1.5"/>
+  <text x="400" y="500" text-anchor="middle" fill="#e78284" font-size="12">2 × 43.6 at the base</text>
+
+  <!-- explanation -->
+  <text x="580" y="130" fill="#a5adce" font-size="13">Mesh rotated 180° on x,</text>
+  <text x="580" y="150" fill="#a5adce" font-size="13">so local -y points up.</text>
+  <text x="580" y="186" fill="#a5adce" font-size="12">wedgeProgress =</text>
+  <text x="590" y="202" fill="#a5adce" font-size="12">(y + 200) / 110</text>
+  <text x="580" y="224" fill="#a5adce" font-size="12">wedgeHalfWidth =</text>
+  <text x="590" y="240" fill="#a5adce" font-size="12">64 × (1 - wedgeProgress)</text>
+  <text x="580" y="266" fill="#e78284" font-size="12">discard if y &lt; -90</text>
+  <text x="580" y="282" fill="#e78284" font-size="12">and |x| &lt; wedgeHalfWidth</text>
+
+  <!-- top-down inset: the mask is a slab through the depth -->
+  <text x="660" y="330" text-anchor="middle" fill="#a5adce" font-size="12">seen from above</text>
+  <circle cx="660" cy="410" r="60" fill="#007F62" opacity="0.9"/>
+  <rect x="646" y="350" width="28" height="120" fill="url(#hatch)" stroke="#e78284" stroke-width="1.5"/>
+  <text x="660" y="495" text-anchor="middle" fill="#a5adce" font-size="12">|x| &lt; wedgeHalfWidth, any z</text>
+</svg>

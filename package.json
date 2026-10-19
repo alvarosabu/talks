@@ -1,0 +1,22 @@
+{
+  "name": "talks",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Talks monorepo",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r clean && rm -rf node_modules"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "packageManager": "pnpm@10.28.1",
+  "dependencies": {
+    "@tresjs/core": "catalog:",
+    "@tresjs/post-processing": "catalog:"
+  }
+}
