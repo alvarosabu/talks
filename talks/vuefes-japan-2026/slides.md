@@ -1784,6 +1784,18 @@ eyebrow: Lessons
 -->
 
 ---
+
+# Links
+
+<LinkCards
+  :links="[
+    { title: 'Slides', url: 'https://vuefesjapan-2026.alvarosabu.dev/' },
+    { title: 'TresJS', url: 'https://tresjs.org' },
+    { title: 'Portfolio', url: 'https://alvarosabu.dev' },
+  ]"
+/>
+
+---
 layout: cover
 ---
 

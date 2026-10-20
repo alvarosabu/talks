@@ -16,7 +16,8 @@
     "@tresjs/core": "catalog:",
     "gsap": "catalog:",
     "slidev-theme-as": "workspace:*",
-    "three": "catalog:"
+    "three": "catalog:",
+    "uqr": "catalog:"
   },
   "devDependencies": {
     "@types/three": "catalog:"
